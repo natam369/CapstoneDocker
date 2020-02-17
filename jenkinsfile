@@ -32,7 +32,7 @@ node {
   
   stage('Pushing DockerImage to DockerHub') {
 	  docker.withRegistry('', 'dockerhub' ) {
-		    sh label: '', script: 'sudo docker push m1056287/capstone:$BUILD_NUMBER'
+		    sh label: '', script: 'docker push m1056287/capstone:$BUILD_NUMBER'
 		  }
    
   }
