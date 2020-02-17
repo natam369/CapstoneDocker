@@ -3,8 +3,8 @@ node {
   notify('Job Started') 
   
   environment {
-    registry = "charan253/capstoneproject"
-    registryCredential = 'charan-dockerhub'
+    registry = "m1056287/capstone"
+    registryCredential = '@P5k5n5!%'
   }
 
      
@@ -18,7 +18,7 @@ node {
             def downloadSpec = """{
             "files": [
             {
-                "pattern": "capstoneproject/CapStoneProject-0.0.1-SNAPSHOT.war",
+                "pattern": "project/bikeshop-0.0.1-SNAPSHOT.war",
                 "target": "./capstoneproject.war"
             }
             ]
@@ -31,8 +31,8 @@ node {
   }
   
   stage('Pushing DockerImage to DockerHub') {
-	  docker.withRegistry('', 'charan-dockerhub' ) {
-		    sh label: '', script: 'docker push charan253/capstoneproject:$BUILD_NUMBER'
+	  docker.withRegistry('', 'registryCredential' ) {
+		    sh label: '', script: 'docker push m1056287/capstone:$BUILD_NUMBER'
 		  }
    
   }
@@ -41,7 +41,7 @@ node {
   	input "Start provisioning the production server?"
   }
   stage('Downstream Build -- Docker Deployment'){
-	 build 'pipe-Terraform'
+	 build 'Terraform'
 	}
  notify('Job Completed')   
 } catch (err) {
