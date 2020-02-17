@@ -31,7 +31,7 @@ node {
   }
   
   stage('Pushing DockerImage to DockerHub') {
-	  docker.withRegistry('', 'registryCredential' ) {
+	  docker.withRegistry('', registryCredential ) {
 		    sh label: '', script: 'docker push m1056287/capstone:$BUILD_NUMBER'
 		  }
    
