@@ -9,7 +9,7 @@ node {
 
      
   stage('Git-Checkout') {
-   git 'https://github.com/SaiCharanUppari/dockerrepo.git'
+   git 'https://github.com/natam369/ProjectDocker.git'
   }
 
     
