@@ -11,17 +11,14 @@ node {
   stage('Git-Checkout') {
    git 'https://github.com/SaiCharanUppari/dockerrepo.git'
   }
-    
- //def project_path="capstoneproject/capstoneproject/"
- 
-// dir(project_path) {
+
     
   stage('Download package from JFrog') {
             def server= Artifactory.server 'Artifactory'
             def downloadSpec = """{
             "files": [
             {
-                "pattern": "capstoneproject/capstoneproject-0.0.1-SNAPSHOT.war",
+                "pattern": "capstoneproject/CapStoneProject-0.0.1-SNAPSHOT.war",
                 "target": "./capstoneproject.war"
             }
             ]
@@ -46,8 +43,6 @@ node {
   stage('Downstream Build -- Docker Deployment'){
 	 build 'pipe-Terraform'
 	}
-//}	-----------dir end---------  
-
  notify('Job Completed')   
 } catch (err) {
   notify("Error ${err}")
@@ -56,11 +51,9 @@ node {
 
 }
 
-
-
 def notify(status){
     emailext (
-	to: "saicharan713@gmail.com",
+	to: "natammegasachin369@gmail.com",
 	subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
 	 body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
 	<p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
