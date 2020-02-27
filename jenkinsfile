@@ -9,7 +9,7 @@ node {
 
      
   stage('Git-Checkout') {
-   git 'https://github.com/natam369/ProjectDocker.git'
+   git 'https://github.com/natam369/CapstoneDocker.git'
   }
 
     
@@ -41,7 +41,7 @@ node {
   	input "Start provisioning the production server?"
   }
   stage('Downstream Build -- Docker Deployment'){
-	 build 'AnsibleTerraform'
+	 build 'CapstoneTerraform'
 	}
  notify('Job Completed')   
 } catch (err) {
